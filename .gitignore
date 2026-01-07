@@ -1,15 +1,9 @@
-# Environment variables
 .env
-.env.*
 
-# Virtual environment
-env/
-venv/
 
-# Python cache
 __pycache__/
 *.pyc
 
-# Generated data
+
 data/metrics/*.csv
 data/comparison_reports/*.csv
