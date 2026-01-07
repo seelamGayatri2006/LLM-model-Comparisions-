@@ -1,11 +1,11 @@
 from openai import OpenAI
-import os
+import streamlit as st
 
 def chatgpt_response(prompt: str) -> str:
-    api_key = os.getenv("OPENAI_API_KEY")
-
-    if not api_key:
-        return " OPENAI_API_KEY not found"
+    try:
+        api_key = st.secrets["OPENAI_API_KEY"]
+    except KeyError:
+        return "OPENAI_API_KEY not found in Streamlit Secrets"
 
     client = OpenAI(api_key=api_key)
 
