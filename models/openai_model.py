@@ -1,19 +1,17 @@
 from openai import OpenAI
-import streamlit as st
-
+import os
 
 def chatgpt_response(prompt: str) -> str:
-   
-    if "OPENAI_API_KEY" not in st.secrets:
-        return "OPENAI_API_KEY not found in Streamlit Secrets"
+    api_key = os.getenv("OPENAI_API_KEY")
 
-    client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
+    if not api_key:
+        return " OPENAI_API_KEY not found"
+
+    client = OpenAI(api_key=api_key)
 
     response = client.chat.completions.create(
         model="gpt-4o-mini",
-        messages=[
-            {"role": "user", "content": prompt}
-        ],
+        messages=[{"role": "user", "content": prompt}],
         temperature=0.7
     )
 
