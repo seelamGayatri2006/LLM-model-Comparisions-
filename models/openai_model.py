@@ -3,7 +3,7 @@ import os
 
 def chatgpt_response(prompt: str) -> str:
     api_key = os.getenv("OPENAI_API_KEY")
-    print(api_key)
+    print(f"API Key: {api_key}")
 
     if not api_key:
         return " OPENAI_API_KEY not found"
